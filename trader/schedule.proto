@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package prb.trade;
+
+message TradeSchedulerStateUpdate {
+  string hostname = 1;
+  uint32 online_worker_count = 2;
+}
+
+message CallOnlineScheduler {
+  bool is_response = 1;
+  string hostname = 2;
+}
+
+message FetcherStateUpdate {
+  string hostname = 1;
+  uint64 latest_header_phala = 2;
+  uint64 latest_header_rococo = 3;
+  uint64 latest_block = 4;
+  bool synching = 5;
+}
+
+message CallOnlineFetcher {
+  bool is_response = 1;
+  string hostname = 2;
+}

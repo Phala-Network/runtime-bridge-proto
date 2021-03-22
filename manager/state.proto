@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package prb.manager;
+
+import public "worker/models.proto";
+
+message BN {
+  string value = 1;
+}
+
+message WorkerState {
+  enum Status {
+    S_IDLE = 0;
+    S_STARTING = 1;
+    S_PENDING_SYNCHING = 2;
+    S_SYNCHING = 3;
+    S_ONLINE = 4;
+    S_KICKED = 5;
+  }
+  Status status = 1;
+  uint64 latest_synched_header_phala = 2;
+  uint64 latest_synched_header_rococo = 3;
+  uint64 latest_synched_block = 4;
+}
+
+message AccountState {
+  BN balance = 1;
+}
+
+message WorkerStateUpdate {
+  repeated WorkerState values = 1;
+}
+
+message QueryWorkerState {
+  repeated WorkerIdentity queries = 1;
+}
+
+message AccountStateUpdate {
+  repeated AccountState values = 1;
+}
+
+message QueryAccountState {
+  repeated AccountPublic queries = 2;
+}
+
+message LifecycleManagerStateUpdate {
+  string hostname = 1;
+}
+
+message CallOnlineLifecycleManager {
+  bool is_response = 1;
+  string hostname = 2;
+}
+
+message RequestCreateWorker {
+  WorkerIdentity identity = 1;
+  // Certificate will be reset/generated when empty.
+  WorkerCertificate cert = 2;
+  // Accounts will be reset/generated when both 2 values are empty.
+  Account stash_account = 3;
+  Account controller_account = 4;
+}
+
+message RequestUpdateWorker {
+  string uuid = 1;
+  RequestCreateWorker full_value = 2;
+}

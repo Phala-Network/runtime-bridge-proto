@@ -5,6 +5,10 @@ package prb;
 import "google/protobuf/timestamp.proto";
 import "utils.proto";
 import "error.proto";
+import "worker/lifecycle.proto";
+import "worker/models.proto";
+import "manager/state.proto";
+import "trader/schedule.proto";
 
 enum MessageType {
   MTP_BROADCAST = 0;
@@ -27,23 +31,23 @@ message MessageContent {
     bytes encrypted = 1; // MessageContent encoded+encrypted
     Error error = 2;
     Ack ack = 3;
-    Placeholder worker_state_update = 4;
-    Placeholder query_worker_state = 5;
-    Placeholder account_state_update = 6;
-    Placeholder query_account_state = 7;
-    Placeholder request_kick_worker = 8;
-    Placeholder worker_should_exit = 9;
-    Placeholder trade_scheduler_state_update = 10;
-    Placeholder call_online_scheduler = 11;
-    Placeholder fetcher_state_update = 12;
-    Placeholder call_online_fetcher = 13;
-    Placeholder lifecycle_manager_state_update = 14;
-    Placeholder call_online_lifecycle_manager = 15;
+    manager.WorkerStateUpdate worker_state_update = 4;
+    manager.QueryWorkerState query_worker_state = 5;
+    manager.AccountStateUpdate account_state_update = 6;
+    manager.QueryAccountState query_account_state = 7;
+    worker.RequestKickWorker request_kick_worker = 8;
+    worker.WorkerShouldExit worker_should_exit = 9;
+    trade.TradeSchedulerStateUpdate trade_scheduler_state_update = 10;
+    trade.CallOnlineScheduler call_online_scheduler = 11;
+    trade.FetcherStateUpdate fetcher_state_update = 12;
+    trade.CallOnlineFetcher call_online_fetcher = 13;
+    manager.LifecycleManagerStateUpdate lifecycle_manager_state_update = 14;
+    manager.CallOnlineLifecycleManager call_online_lifecycle_manager = 15;
+    manager.RequestCreateWorker request_create_worker = 16;
+    manager.RequestUpdateWorker request_update_worker = 17;
 
-    Placeholder request_create_worker = 16;
-    Placeholder request_start_worker_lifecycle = 17;
-    Placeholder are_you_there = 18;
-    Placeholder request_update_worker = 19;
+    worker.RequestStartWorkerLifecycle request_start_worker_lifecycle = 18; // worker only, initialize crypto context
+    worker.AreYouThere are_you_there = 19; // worker only
   }
 }
 
@@ -55,5 +59,4 @@ message Message {
   uint64 nonce = 5; // required
   uint64 nonce_ref = 6; // 0 => none
   MessageType type = 7;
-  MessageProcedure procedure = 8;
 }
