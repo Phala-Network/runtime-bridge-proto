@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package prb;
+
+message Empty {}
+message Placeholder {}
+message Ack {
+  bool ack = 1;
+}
