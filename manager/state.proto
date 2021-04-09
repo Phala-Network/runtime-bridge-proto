@@ -16,15 +16,18 @@ message WorkerState {
     S_SYNCHING = 3;
     S_ONLINE = 4;
     S_KICKED = 5;
+    S_ERROR = 6;
   }
   Status status = 1;
   uint64 latest_synched_header_phala = 2;
   uint64 latest_synched_header_rococo = 3;
   uint64 latest_synched_block = 4;
+  bool initialized = 5;
 }
 
 message AccountState {
-  BN balance = 1;
+  AccountPublic account = 1;
+  BN balance = 2;
 }
 
 message WorkerStateUpdate {
@@ -54,8 +57,7 @@ message CallOnlineLifecycleManager {
 
 message RequestCreateWorker {
   WorkerIdentity identity = 1;
-  // Certificate will be reset/generated when empty.
-  WorkerCertificate cert = 2;
+  string payout_address = 2; // Will be checked next lifecycle
   // Accounts will be reset/generated when both 2 values are empty.
   Account stash_account = 3;
   Account controller_account = 4;
