@@ -28,6 +28,8 @@ message WorkerState {
 message AccountState {
   AccountPublic account = 1;
   BN balance = 2;
+  string payout_address = 3;
+  bool intention = 4;
 }
 
 message WorkerStateUpdate {
@@ -61,6 +63,8 @@ message RequestCreateWorker {
   // Accounts will be reset/generated when both 2 values are empty.
   Account stash_account = 3;
   Account controller_account = 4;
+  string pruntime_endpoint = 5;
+
 }
 
 message RequestUpdateWorker {
