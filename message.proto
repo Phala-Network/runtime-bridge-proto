@@ -20,7 +20,7 @@ enum MessageType {
 enum MessageTarget {
   MTG_BROADCAST = 0;
   MTG_MANAGER = 1;
-  MTG_TRADE_SCHEDULER = 2;
+  MTG_FETCHER = 2;
   MTG_TRADE_WORKER = 3;
   MTG_WORKER = 4;
   MTG_INTERNAL_PRESERVED = 5;
@@ -55,7 +55,7 @@ message Message {
   MessageTarget from = 1;
   MessageTarget to = 2;
   MessageContent content = 3;
-  google.protobuf.Timestamp created_at = 4; // required
+  uint64 created_at = 4; // required
   uint64 nonce = 5; // required
   uint64 nonce_ref = 6; // 0 => none
   MessageType type = 7;
