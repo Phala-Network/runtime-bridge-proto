@@ -23,13 +23,9 @@ message WorkerState {
   uint64 latest_synched_header_rococo = 3;
   uint64 latest_synched_block = 4;
   bool initialized = 5;
-}
-
-message AccountState {
-  AccountPublic account = 1;
-  BN balance = 2;
-  string payout_address = 3;
-  bool intention = 4;
+  BN balance = 7;
+  string payout_address = 8;
+  bool intention = 9;
 }
 
 message WorkerStateUpdate {
@@ -38,14 +34,6 @@ message WorkerStateUpdate {
 
 message QueryWorkerState {
   repeated WorkerIdentity queries = 1;
-}
-
-message AccountStateUpdate {
-  repeated AccountState values = 1;
-}
-
-message QueryAccountState {
-  repeated AccountPublic queries = 2;
 }
 
 message LifecycleManagerStateUpdate {

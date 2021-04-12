@@ -33,21 +33,16 @@ message MessageContent {
     Ack ack = 3;
     manager.WorkerStateUpdate worker_state_update = 4;
     manager.QueryWorkerState query_worker_state = 5;
-    manager.AccountStateUpdate account_state_update = 6;
-    manager.QueryAccountState query_account_state = 7;
-    worker.RequestKickWorker request_kick_worker = 8;
-    worker.WorkerShouldExit worker_should_exit = 9;
-    trade.TradeSchedulerStateUpdate trade_scheduler_state_update = 10;
-    trade.CallOnlineScheduler call_online_scheduler = 11;
-    trade.FetcherStateUpdate fetcher_state_update = 12;
-    trade.CallOnlineFetcher call_online_fetcher = 13;
-    manager.LifecycleManagerStateUpdate lifecycle_manager_state_update = 14;
-    manager.CallOnlineLifecycleManager call_online_lifecycle_manager = 15;
-    manager.RequestCreateWorker request_create_worker = 16;
-    manager.RequestUpdateWorker request_update_worker = 17;
-
-    worker.RequestStartWorkerLifecycle request_start_worker_lifecycle = 18; // worker only, initialize crypto context
-    worker.AreYouThere are_you_there = 19; // worker only
+    worker.RequestKickWorker request_kick_worker = 6;
+    trade.FetcherStateUpdate fetcher_state_update = 7;
+    trade.CallOnlineFetcher call_online_fetcher = 8;
+    manager.LifecycleManagerStateUpdate lifecycle_manager_state_update = 9;
+    manager.CallOnlineLifecycleManager call_online_lifecycle_manager = 10;
+    manager.RequestCreateWorker request_create_worker = 11;
+    manager.RequestUpdateWorker request_update_worker = 12;
+    manager.RequestUpdateWorker request_remove_worker = 13;
+    worker.RequestStartWorkerLifecycle request_start_worker_lifecycle = 14;
+    worker.AreYouThere are_you_there = 15;
   }
 }
 
