@@ -51,7 +51,7 @@ message Message {
   MessageTarget to = 2;
   MessageContent content = 3;
   uint64 created_at = 4; // required
-  uint32 nonce = 5; // required
-  uint32 nonce_ref = 6; // 0 => none
+  string nonce = 5; // required
+  string nonce_ref = 6; // 0 => none
   MessageType type = 7;
 }

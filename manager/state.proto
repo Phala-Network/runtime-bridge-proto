@@ -25,7 +25,7 @@ message WorkerState {
   bool initialized = 5;
   BN balance = 7;
   string payout_address = 8;
-  bool intention = 9;
+  string worker_state = 9;
 }
 
 message WorkerStateUpdate {

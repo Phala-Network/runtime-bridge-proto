@@ -14,10 +14,10 @@ message CallOnlineScheduler {
 
 message FetcherStateUpdate {
   string hostname = 1;
-  uint64 latest_header_phala = 2;
-  uint64 latest_header_rococo = 3;
-  uint64 latest_block = 4;
-  bool synching = 5;
+  uint32 latest_header_phala = 2;
+  uint32 latest_header_rococo = 3;
+  uint32 latest_block = 4;
+  bool synched = 5;
 }
 
 message CallOnlineFetcher {
