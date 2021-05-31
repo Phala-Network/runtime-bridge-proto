@@ -23,9 +23,8 @@ message WorkerState {
   uint64 latest_synched_header_rococo = 3;
   uint64 latest_synched_block = 4;
   bool initialized = 5;
-  BN balance = 7;
-  string payout_address = 8;
-  string worker_state = 9;
+  string payout_address = 6;
+  WorkerIdentity indentity = 7;
 }
 
 message WorkerStateUpdate {

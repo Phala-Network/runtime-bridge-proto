@@ -9,7 +9,8 @@ message WorkerCertificate {
 
 message WorkerIdentity {
   string uuid = 1;
-  string cert_hash = 2;
+  AccountPublic stash_account_public = 2;
+  AccountPublic controller_account_public = 3;
 }
 
 message Account {
