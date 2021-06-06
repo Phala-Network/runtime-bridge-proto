@@ -19,9 +19,9 @@ message WorkerState {
     S_ERROR = 6;
   }
   Status status = 1;
-  uint64 latest_synched_header_phala = 2;
-  uint64 latest_synched_header_rococo = 3;
-  uint64 latest_synched_block = 4;
+  int64 latest_synched_header_phala = 2;
+  int64 latest_synched_header_rococo = 3;
+  int64 latest_synched_block = 4;
   bool initialized = 5;
   string payout_address = 6;
   WorkerIdentity indentity = 7;
