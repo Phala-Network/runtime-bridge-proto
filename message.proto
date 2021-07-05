@@ -22,7 +22,7 @@ enum MessageTarget {
   MTG_MANAGER = 1;
   MTG_FETCHER = 2;
   MTG_TRADE_WORKER = 3;
-  MTG_WORKER = 4;
+  MTG_APP = 4;
   MTG_INTERNAL_PRESERVED = 5;
 }
 
