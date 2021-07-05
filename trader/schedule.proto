@@ -14,10 +14,10 @@ message CallOnlineScheduler {
 
 message FetcherStateUpdate {
   string hostname = 1;
-  uint32 init_height = 2;
-  uint32 known_height = 3;
-  uint32 blob_height = 4;
-  uint32 archived_height = 5;
+  int32 init_height = 2;
+  int32 known_height = 3;
+  int32 blob_height = 4;
+  int32 archived_height = 5;
   bool has_reached_init_target = 6;
 }
 
