@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package prb;
+
+import "models.proto";
+
+message RequestStartWorkerLifecycle {
+  WorkerIdentity identity = 1;
+}
+
+message RequestKickWorker {
+  WorkerIdentity identity = 1;
+  string reason = 2;
+}

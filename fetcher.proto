@@ -1,16 +1,6 @@
 syntax = "proto3";
 
-package prb.trade;
-
-message TradeSchedulerStateUpdate {
-  string hostname = 1;
-  uint32 online_worker_count = 2;
-}
-
-message CallOnlineScheduler {
-  bool is_response = 1;
-  string hostname = 2;
-}
+package prb;
 
 message FetcherStateUpdate {
   string hostname = 1;

@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+package prb.db;
+
+message Block {
+  uint32 block_number = 1;
+  bytes hash = 2; // BlockHash
+  bytes header = 3; // Header
+  uint32 set_id = 4;
+  bool is_new_round = 5;
+  bool has_justification = 6;
+  bytes sync_header_data = 7; // HeaderToSync
+  bytes dispatch_block_data = 8; // BlockHeaderWithEvents
+  bytes authority_set_change = 9; // Option<AuthoritySetChange>
+  // genesis block only
+  bytes genesis_state = 10; // Vec<KeyValue>
+  bytes bridge_genesis_info = 11; // GenesisInfo
+}
+
+message Window {
+  int32 start_block = 1;
+  int32 stop_block = 2;
+  int32 current_block = 3;
+  int32 window_id = 4;
+  int32 set_id = 5;
+  bool is_finished = 6;
+}
+
+message RangeMeta {
+  uint32 start_block = 1;
+  uint32 stop_block = 2;
+  repeated uint32 range = 3;
+  string dry_sync_header_req_key = 4;
+  string dry_dispatch_block_req_key = 5;
+  int32 latest_set_id = 6;
+  uint32 blob_stop_block = 7;
+  string blob_sync_header_req_key = 8;
+  string blob_dispatch_block_req_key = 9;
+}
+
+message PoolOwner {
+  string mnemonic = 1;
+  string polkadot_json = 2;
+  string ss58_phala = 3;
+  string ss58_polkadot = 4;
+}
+
+message Pool {
+  PoolOwner owner = 1;
+  uint64 pid = 2;
+  bool enabled = 3;
+  bool deleted = 4;
+}
+
+message Worker {
+  uint64 pid = 1;
+  string nickname = 2;
+  string runtime_endpoint = 3;
+  bool enabled = 4;
+  bool deleted = 5;
+}

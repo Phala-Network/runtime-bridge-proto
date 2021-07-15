@@ -5,10 +5,11 @@ package prb;
 import "google/protobuf/timestamp.proto";
 import "utils.proto";
 import "error.proto";
-import "worker/lifecycle.proto";
-import "worker/models.proto";
-import "manager/state.proto";
-import "trader/schedule.proto";
+import "lifecycle.proto";
+import "models.proto";
+import "state.proto";
+import "fetcher.proto";
+import "db.proto";
 
 enum MessageType {
   MTP_BROADCAST = 0;
@@ -31,18 +32,17 @@ message MessageContent {
     bytes encrypted = 1; // MessageContent encoded+encrypted
     Error error = 2;
     Ack ack = 3;
-    manager.WorkerStateUpdate worker_state_update = 4;
-    manager.QueryWorkerState query_worker_state = 5;
-    worker.RequestKickWorker request_kick_worker = 6;
-    trade.FetcherStateUpdate fetcher_state_update = 7;
-    trade.CallOnlineFetcher call_online_fetcher = 8;
-    manager.LifecycleManagerStateUpdate lifecycle_manager_state_update = 9;
-    manager.CallOnlineLifecycleManager call_online_lifecycle_manager = 10;
-    manager.RequestCreateWorker request_create_worker = 11;
-    manager.RequestUpdateWorker request_update_worker = 12;
-    manager.RequestUpdateWorker request_remove_worker = 13;
-    worker.RequestStartWorkerLifecycle request_start_worker_lifecycle = 14;
-    worker.AreYouThere are_you_there = 15;
+    WorkerStateUpdate worker_state_update = 4;
+    QueryWorkerState query_worker_state = 5;
+    RequestKickWorker request_kick_worker = 6;
+    FetcherStateUpdate fetcher_state_update = 7;
+    CallOnlineFetcher call_online_fetcher = 8;
+    LifecycleManagerStateUpdate lifecycle_manager_state_update = 9;
+    CallOnlineLifecycleManager call_online_lifecycle_manager = 10;
+    RequestCreateWorker request_create_worker = 11;
+    RequestUpdateWorker request_update_worker = 12;
+    RequestUpdateWorker request_remove_worker = 13;
+    RequestStartWorkerLifecycle request_start_worker_lifecycle = 14;
   }
 }
 
