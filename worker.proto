@@ -61,7 +61,7 @@ message RequestCreatePool {
   repeated db.Pool pools = 1;
 }
 
-message RequestUpdateWorker {
+message RequestUpdatePool {
   message Item {
     PoolOrWorkerQueryIdentity id = 1;
     // full value needed.
