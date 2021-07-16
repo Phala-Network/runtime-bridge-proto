@@ -1,0 +1,73 @@
+syntax = "proto3";
+
+package prb;
+
+import "db.proto";
+
+message WorkerState {
+  enum Status {
+    S_IDLE = 0;
+    S_STARTING = 1;
+    S_PENDING_SYNCHING = 2;
+    S_SYNCHING = 3;
+    S_ONLINE = 4;
+    S_KICKED = 5;
+    S_ERROR = 6;
+  }
+  Status status = 1;
+  uint32 header_synched_to = 2;
+  uint32 block_dispatched_to = 4;
+  bool initialized = 5;
+  db.Worker worker = 6;
+  string machine_id = 7;
+  string public_key = 8;
+  string last_error_message = 9;
+}
+
+message PoolOrWorkerQueryIdentity {
+  oneof identity {
+    string uuid = 1;
+    string name = 2;
+    string pid = 3; // only for pool
+  }
+}
+
+message QueryWorkerState {
+  repeated PoolOrWorkerQueryIdentity ids = 1;
+}
+
+message WorkerStateUpdate {
+  repeated WorkerState worker_states = 1;
+}
+
+message RequestCreateWorker {
+  // explictly setting uuid will be ignored.
+  repeated db.Worker workers = 1;
+}
+
+message RequestUpdateWorker {
+  message Item {
+    PoolOrWorkerQueryIdentity id = 1;
+    // full value needed.
+    // to delete, set `deleted` to true.
+    // changes to `uuid` will be ignored.
+    db.Worker worker = 2;
+  }
+  repeated Item items = 1;
+}
+
+message RequestCreatePool {
+  // explictly setting uuid will be ignored.
+  repeated db.Pool pools = 1;
+}
+
+message RequestUpdateWorker {
+  message Item {
+    PoolOrWorkerQueryIdentity id = 1;
+    // full value needed.
+    // to delete, set `deleted` to true.
+    // changes to `uuid` will be ignored.
+    db.Pool pools = 2;
+  }
+  repeated Item items = 1;
+}

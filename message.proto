@@ -5,11 +5,11 @@ package prb;
 import "google/protobuf/timestamp.proto";
 import "utils.proto";
 import "error.proto";
-import "lifecycle.proto";
-import "models.proto";
-import "state.proto";
-import "fetcher.proto";
 import "db.proto";
+import "lifecycle.proto";
+import "worker.proto";
+import "fetcher.proto";
+
 
 enum MessageType {
   MTP_BROADCAST = 0;
@@ -28,21 +28,28 @@ enum MessageTarget {
 }
 
 message MessageContent {
-  oneof type { // main rpc route switch
+  // main rpc routes
+  oneof type {
     bytes encrypted = 1; // MessageContent encoded+encrypted
     Error error = 2;
     Ack ack = 3;
+
     WorkerStateUpdate worker_state_update = 4;
-    QueryWorkerState query_worker_state = 5;
-    RequestKickWorker request_kick_worker = 6;
-    FetcherStateUpdate fetcher_state_update = 7;
-    CallOnlineFetcher call_online_fetcher = 8;
-    LifecycleManagerStateUpdate lifecycle_manager_state_update = 9;
-    CallOnlineLifecycleManager call_online_lifecycle_manager = 10;
-    RequestCreateWorker request_create_worker = 11;
-    RequestUpdateWorker request_update_worker = 12;
-    RequestUpdateWorker request_remove_worker = 13;
-    RequestStartWorkerLifecycle request_start_worker_lifecycle = 14;
+    QueryWorkerState query_worker_state = 5; // response: worker_state_update
+    RequestKickWorker request_kick_worker = 6; // response: worker_state_update
+    RequestStartWorkerLifecycle request_start_worker_lifecycle = 7; // response: worker_state_update
+
+    FetcherStateUpdate fetcher_state_update = 8;
+    CallOnlineFetcher call_online_fetcher = 9; // response: fetcher_state_update
+
+    LifecycleManagerStateUpdate lifecycle_manager_state_update = 10;
+    CallOnlineLifecycleManager call_online_lifecycle_manager = 11; // response: lifecycle_manager_state_update
+
+    RequestCreateWorker request_create_worker = 12; // response: lifecycle_manager_state_update, only affected workers will be returned
+    RequestUpdateWorker request_update_worker = 13; // response: lifecycle_manager_state_update, only affected workers will be returned
+
+    RequestCreatePool request_create_pool = 14; // response: lifecycle_manager_state_update, only affected pools will be returned
+    RequestUpdatePool request_update_pool = 15; // response: lifecycle_manager_state_update, only affected pools will be returned
   }
 }
 
