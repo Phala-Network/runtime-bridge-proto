@@ -4,28 +4,41 @@ package prb.db;
 
 import "utils.proto";
 
-message Block {
-  uint32 block_number = 1;
+message ParentBlock {
+  uint32 number = 1;
   bytes hash = 2; // BlockHash
   bytes header = 3; // Header
   uint32 set_id = 4;
-  bool is_new_round = 5;
-  bool has_justification = 6;
-  bytes sync_header_data = 7; // HeaderToSync
-  bytes dispatch_block_data = 8; // BlockHeaderWithEvents
-  bytes authority_set_change = 9; // Option<AuthoritySetChange>
-  // genesis block only
-  bytes genesis_state = 10; // Vec<KeyValue>
-  bytes bridge_genesis_info = 11; // GenesisInfo
+  bool has_justification = 5;
+  bytes sync_header_data = 6; // HeaderToSync
+  bytes authority_set_change = 7; // Option<AuthoritySetChange>
+}
+
+message ParaBlock {
+  uint32 number = 1;
+  bytes hash = 2; // BlockHash
+  bytes header = 3; // Header
+  uint32 parent_number = 4;
+  bytes dispatch_block_data = 5; // BlockHeaderWithChanges
+  bytes proof = 6; // StorageProof
+}
+
+message Genesis {
+  uint32 para_id = 1;
+  uint32 para_number = 2;
+  uint32 parent_number = 3;
+  string bridge_genesis_info_b64 = 4;
+  string genesis_state_b64 = 5;
 }
 
 message Window {
-  int32 start_block = 1;
-  int32 stop_block = 2;
-  int32 current_block = 3;
-  int32 window_id = 4;
-  int32 set_id = 5;
-  bool is_finished = 6;
+  int32 parent_start_block = 1;
+  int32 parent_stop_block = 2;
+  int32 para_start_block = 3;
+  int32 para_stop_block = 4;
+  int32 window_id = 5;
+  int32 set_id = 6;
+  bool is_finished = 7;
 }
 
 message RangeMeta {
