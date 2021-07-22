@@ -42,15 +42,20 @@ message Window {
 }
 
 message RangeMeta {
-  uint32 start_block = 1;
-  uint32 stop_block = 2;
-  repeated uint32 range = 3;
-  string dry_sync_header_req_key = 4;
-  string dry_dispatch_block_req_key = 5;
-  int32 latest_set_id = 6;
-  uint32 blob_stop_block = 7;
-  string blob_sync_header_req_key = 8;
-  string blob_dispatch_block_req_key = 9;
+  uint32 parent_start_block = 1;
+  uint32 parent_stop_block = 2;
+  int32 para_start_block = 3;
+  int32 para_stop_block = 4;
+  repeated uint32 parent_range = 5;
+  repeated uint32 para_range = 6;
+  string dry_sync_header_req_key = 7;
+  string dry_sync_para_header_req_key = 8;
+  string dry_dispatch_block_req_key = 9;
+  int32 latest_set_id = 10;
+  uint32 blob_parent_stop_block = 11;
+  string blob_sync_header_req_key = 12;
+  string blob_sync_para_header_req_key = 13;
+  string blob_dispatch_block_req_key = 14;
 }
 
 message Pool {
