@@ -4,11 +4,19 @@ package prb;
 
 message FetcherStateUpdate {
   string hostname = 1;
-  int32 init_height = 2;
-  int32 known_height = 3;
-  int32 blob_height = 4;
-  int32 archived_height = 5;
-  bool has_reached_init_target = 6;
+  int32 paraId = 2;
+
+  int32 parentStartHeader = 3;
+
+  int32 parentKnownHeight = 4;
+  int32 parentBlobHeight = 5;
+  int32 parentArchivedHeight = 6;
+
+  int32 paraKnownHeight = 7;
+  int32 paraBlobHeight = 8;
+  int32 paraArchivedHeight = 9;
+
+  bool synched = 10;
 }
 
 message CallOnlineFetcher {
