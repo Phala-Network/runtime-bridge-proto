@@ -41,7 +41,7 @@ message WorkerStateUpdate {
 }
 
 message RequestCreateWorker {
-  // explictly setting uuid will be ignored.
+  // explicitly setting uuid will be ignored.
   repeated db.Worker workers = 1;
 }
 
@@ -57,7 +57,7 @@ message RequestUpdateWorker {
 }
 
 message RequestCreatePool {
-  // explictly setting uuid will be ignored.
+  // explicitly setting uuid will be ignored.
   repeated db.Pool pools = 1;
 }
 
@@ -67,7 +67,7 @@ message RequestUpdatePool {
     // full value needed.
     // to delete, set `deleted` to true.
     // changes to `uuid` will be ignored.
-    db.Pool pools = 2;
+    db.Pool pool = 2;
   }
   repeated Item items = 1;
 }
