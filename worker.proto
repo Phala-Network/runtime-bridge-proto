@@ -28,7 +28,7 @@ message PoolOrWorkerQueryIdentity {
   oneof identity {
     string uuid = 1;
     string name = 2;
-    string pid = 3; // only for pool
+    uint64 pid = 3; // only for pool
   }
 }
 
