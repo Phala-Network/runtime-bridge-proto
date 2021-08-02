@@ -27,8 +27,8 @@ message Genesis {
   uint32 para_id = 1;
   uint32 para_number = 2;
   uint32 parent_number = 3;
-  string bridge_genesis_info_b64 = 4;
-  string genesis_state_b64 = 5;
+  bytes bridge_genesis_info = 4;
+  bytes genesis_state = 5;
 }
 
 message Window {
