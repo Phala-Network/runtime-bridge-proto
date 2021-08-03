@@ -8,9 +8,9 @@ message WorkerState {
   enum Status {
     S_IDLE = 0;
     S_STARTING = 1;
-    S_PENDING_SYNCHING = 2;
-    S_SYNCHING = 3;
-    S_ONLINE = 4;
+    S_SYNCHING = 2;
+    S_SYNCHED = 3;
+    S_MINING = 4;
     S_KICKED = 5;
     S_ERROR = 6;
   }
