@@ -16,11 +16,11 @@ message WorkerState {
     S_ERROR = 7;
   }
   Status status = 1;
-  uint32 header_synched_to = 2;
-  uint32 block_dispatched_to = 4;
+  uint32 parent_header_synched_to = 2;
+  uint32 para_header_synched_to = 3;
+  uint32 para_block_dispatched_to = 4;
   bool initialized = 5;
   db.Worker worker = 6;
-  string machine_id = 7;
   string public_key = 8;
   string last_error_message = 9;
 }
