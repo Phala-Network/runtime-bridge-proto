@@ -10,7 +10,6 @@ import "lifecycle.proto";
 import "worker.proto";
 import "fetcher.proto";
 
-
 enum MessageType {
   MTP_BROADCAST = 0;
   MTP_QUERY = 1;
