@@ -71,4 +71,5 @@ message Worker {
   string endpoint = 4; // HTTP endpoint to pRuntime
   bool enabled = 5;
   bool deleted = 6;
+  string stake = 7; // BalanceOf in BN string
 }
