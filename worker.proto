@@ -22,7 +22,7 @@ message WorkerState {
   bool initialized = 5;
   db.Worker worker = 6;
   string public_key = 8;
-  string last_error_message = 9;
+  string last_message = 9;
   string minerInfoJson = 10;
   string minerAccountId = 11;
 }
