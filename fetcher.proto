@@ -6,15 +6,15 @@ message FetcherStateUpdate {
   string hostname = 1;
   int32 paraId = 2;
 
-  uint32 parentStartHeader = 3;
+  int32 parentStartHeader = 3;
 
-  uint32 parentKnownHeight = 4;
-  uint32 parentBlobHeight = 5;
-  uint32 parentArchivedHeight = 6;
+  int32 parentKnownHeight = 4;
+  int32 parentBlobHeight = 5;
+  int32 parentArchivedHeight = 6;
 
-  uint32 paraKnownHeight = 7;
-  uint32 paraBlobHeight = 8;
-  uint32 paraArchivedHeight = 9;
+  int32 paraKnownHeight = 7;
+  int32 paraBlobHeight = 8;
+  int32 paraArchivedHeight = 9;
 
   bool synched = 10;
 }
