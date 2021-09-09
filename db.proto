@@ -62,6 +62,7 @@ message Pool {
   string name = 4;
   bool enabled = 5;
   bool deleted = 6;
+  string realPhalaSs58 = 7;
 }
 
 message Worker {
