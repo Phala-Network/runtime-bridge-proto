@@ -78,3 +78,6 @@ message RequestUpdatePool {
 message RequestRestartWorker {
   repeated PoolOrWorkerQueryIdentity ids = 1;
 }
+
+message RequestApplyWorkers {
+}

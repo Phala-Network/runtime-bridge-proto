@@ -51,6 +51,8 @@ message MessageContent {
     RequestUpdatePool request_update_pool = 15; // response: lifecycle_manager_state_update, only affected pools will be returned
 
     RequestRestartWorker request_restart_worker = 16;
+
+    RequestApplyWorkers request_apply_workers = 17;
   }
 }
 
