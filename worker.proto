@@ -74,3 +74,10 @@ message RequestUpdatePool {
   }
   repeated Item items = 1;
 }
+
+message RequestRestartWorker {
+  repeated PoolOrWorkerQueryIdentity ids = 1;
+}
+
+message RequestApplyWorkers {
+}
