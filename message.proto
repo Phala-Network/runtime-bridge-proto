@@ -60,4 +60,5 @@ message Message {
   string nonce = 5; // required
   string nonce_ref = 6; // 0 => none
   MessageType type = 7;
+  string ns = 8;
 }
